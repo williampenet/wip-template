@@ -9,6 +9,7 @@ For the ticket you are given:
 1. Restate its acceptance criteria. If they are ambiguous or contradict the PRD/ADRs, stop and report back instead of guessing.
 2. Create branch `wip-<number>-<slug>` from `main`.
 3. Implement the smallest change that meets the criteria. Follow existing patterns; no new dependency without a reason written in the PR.
+   If the ticket involves an LLM: call it only through the provider abstraction, with the model pinned in the accepted model-selection ADR; validate outputs against a schema; follow the security rules in `CLAUDE.md`.
 4. Add or update tests covering the acceptance criteria.
 5. Run lint, typecheck and tests locally until green.
 6. Commit, push, open a PR titled `WIP-<number>: <title>` using the PR template.

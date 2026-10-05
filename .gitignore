@@ -7,3 +7,12 @@ __pycache__/
 .env.*
 !.env.example
 .DS_Store
+# model weights and eval artefacts: never committed
+models/
+*.gguf
+*.safetensors
+*.onnx
+*.pt
+*.pth
+*.pkl
+eval/results/

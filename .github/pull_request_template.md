@@ -18,3 +18,4 @@ WIP-{{number}}
 - [ ] QA verdict posted
 - [ ] Reviewer approved
 - [ ] `docs/BUILD_LOG.md` updated
+- [ ] If a prompt, model or model config changed: eval re-run, `docs/MODEL_EVAL.md` updated

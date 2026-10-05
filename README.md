@@ -30,6 +30,9 @@ This project is part of **WiP – Vibe coding**, a series of products built by A
 6. Continuous deployment of `main`
 7. Demo + narrative ✋
 
+**Model choice** (if the product uses an LLM): {{chosen model, publisher, licence, hosting}} — selected against {{n}} candidates and a proprietary baseline. Quality {{x}} vs baseline {{y}}, cost {{z}}× lower. Details: [ADR]({{docs/adr/...}}) · [evaluation](docs/MODEL_EVAL.md).
+The build agents are Claude (Anthropic); the sovereignty / open-weights policy applies to the model running inside the product.
+
 **Human vs agent split:** see [`docs/BUILD_LOG.md`](docs/BUILD_LOG.md) for the dated log of every human and agent action.
 
 ## Stack
