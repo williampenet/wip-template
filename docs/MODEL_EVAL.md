@@ -25,6 +25,18 @@ Run: `{{eval command}}` · date {{YYYY-MM-DD}} · commit {{sha}}
 
 **Cost method:** {{price per token source and date, or CPU/host cost amortised}}.
 
+One results table per task (`config/models.yaml` → `tasks`).
+
+## Escalation experiment (only for tasks with a `fallback`)
+
+| Setup | Quality | Escalation rate | p95 latency | Cost / 1 000 req |
+|---|---|---|---|---|
+| Primary only | | 0 % | | |
+| Fallback only | | 100 % | | |
+| Primary → fallback | | | | |
+
+**Verdict:** keep / drop escalation for this task — {{reason}}. Rule of thumb: keep it only if it closes most of the quality gap to "fallback only" at a fraction of its cost.
+
 ## Failure analysis
 Typical errors of the chosen model and how the product mitigates them (validation, fallback, UI).
 

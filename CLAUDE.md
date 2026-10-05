@@ -27,6 +27,8 @@ Goal: show we can pick the right model for a precise need without defaulting to 
 - **Smallest model that does the job.** Prefer permissive licences (Apache 2.0, MIT) and EU publishers. Open weights ≠ open source ≠ European: check the licence text.
 - **Hosting order:** local / CPU / in-browser → EU-hosted inference API → dedicated GPU (only with an ADR cost justification).
 - **Provider abstraction:** all model calls go through one module driven by config (provider, model id, pinned revision). Switching model = editing config, never touching business code.
+- **Routing: one task = one model.** Business code calls a *task* (`runTask("categorize", input)`), never a model. `config/models.yaml` maps each task to its model, chosen in that task's model-selection ADR. Different tasks may use different models; the smallest adequate one per task.
+- **Escalation (experimental, opt-in per task):** a task may declare a `fallback` model. The primary answers first; if its output fails schema validation (or a task-specific deterministic check), the request is retried once on the fallback. Escalation stays enabled only if the eval shows it improves quality enough to justify its extra cost and latency; otherwise it is removed and the ADR says why. No LLM-based router choosing a model per request.
 - **Evaluation:** `eval/cases.jsonl` + runner, results in `docs/MODEL_EVAL.md`, re-run in CI. Any prompt or model change must re-run the eval.
 - Shortlist sources: QuelLLM.fr catalogue as a starting point; licence and figures verified on the official model card.
 - Scope: this applies to models **inside the product**. The build agents (Claude) are the tooling and are documented as such in the README.

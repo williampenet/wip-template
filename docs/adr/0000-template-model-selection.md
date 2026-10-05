@@ -5,7 +5,7 @@
 - **Deciders:** William (PM), Claude (engineer)
 - **Evaluation:** [`docs/MODEL_EVAL.md`](../MODEL_EVAL.md)
 
-> Required whenever the product calls an LLM at runtime. One ADR per distinct LLM capability.
+> Required whenever the product calls an LLM at runtime. One ADR per task (one task = one model).
 > Policy: prefer the smallest model that does the job, permissive licences, EU publishers and EU hosting.
 > A large proprietary model is always included **as a baseline for comparison only**.
 
@@ -37,6 +37,9 @@ Copy the headline table from `docs/MODEL_EVAL.md` (quality, p95 latency, cost / 
 
 ## Decision
 {{Chosen model, exact version / revision, hosting.}} Why it beats the alternatives for this need.
+Routing entry: `config/models.yaml` → `tasks.{{task}}`.
+
+**Escalation:** none | fallback to {{model}} on validation failure — kept / dropped per the escalation experiment in `docs/MODEL_EVAL.md`.
 
 ## Security & compliance
 - **Data:** what is sent to the model; personal data minimised; no personal data to a non-EU provider; provider retention and training opt-out confirmed ({{link to provider terms}}).
